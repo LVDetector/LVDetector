@@ -9,16 +9,16 @@ from feature_module import feature_main
 import config
 
 """
-在不更改测试样例的情况下，调用clean2()而非clean()时，
-不会删除parse_main.parse的结果文件，
-第二次调用时可以减少调试时间。注意需要同时注释掉parse_main.parse()才有作用
+Without changing the test cases, when calling clean2() instead of clean(),
+the result file of parse_main.parse will not be deleted,
+which can reduce debugging time on the second call. Note that you need to comment out parse_main.parse() for this to take effect.
 """
 # clean2()    
 clean()
 
 with open("time.txt", "w") as t_log:
     start = time.perf_counter()
-    parse_main.parse()                  # 解析代码，获取所需数据
+    parse_main.parse()                  # Parse the code to obtain the required data.
     t_log.write(
         f"[{'Parsing the testcase':^25}]"
         f"  used {time.perf_counter() - start:>7.2f}s\n"
@@ -26,7 +26,7 @@ with open("time.txt", "w") as t_log:
 
 with open("time.txt", "a+") as t_log:
     start = time.perf_counter()
-    rectify_main.rectify()              # 纠正？
+    rectify_main.rectify()              
     t_log.write(
         f"[{'Rectifying the result':^25}]"
         f"  used {time.perf_counter() - start:>7.2f}s\n"
@@ -34,7 +34,7 @@ with open("time.txt", "a+") as t_log:
 
 with open("time.txt", "a+") as t_log:
     start = time.perf_counter()
-    graph_main.generate()               # 生成？
+    graph_main.generate()               
     t_log.write(
         f"[{'Preparing for slicing':^25}]"
         f"  used {time.perf_counter() - start:>7.2f}s\n"
@@ -55,9 +55,3 @@ with open("time.txt", "a+") as t_log:
         f"[{'Computing slice result':^25}]"
         f"  used {time.perf_counter() - start:>7.2f}s\n"
     )
-# 将统计信息输出到log.txt
-# config.output_to_log()
-# # 将non_vulnerable_proj.txt中的项目从testcase中挑出来，放到non_vulnerable_proj文件夹中
-# config.copy_non_vulnerable_proj()       # 复制项目中所有的.c文件（目前仅有一个）
-# # 累加统计数据，如果需要重新累计，需要手动删除statistics_data.json文件
-# config.accumulate_statistics_data()
