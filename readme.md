@@ -1,6 +1,6 @@
 # joern install
 
-* [参考](https://www.anquanke.com/post/id/236184)：注意将jdk版本更新为17，`sudo apt-get install openjdk-17-jdk`
+* [reference](https://www.anquanke.com/post/id/236184): Make sure to update the JDK version to 17, `sudo apt-get install openjdk-17-jdk`
 * install java17
 
 ```bash
