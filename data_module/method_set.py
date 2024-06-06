@@ -5,7 +5,7 @@ ae_func_1 = {
     "<operator>.shiftLeft",
     "<operator>.assignmentMultiplication",
     "<operator>.assignmentDivision",
-    "<operators>.assignmentShiftLeft",  # operator 是否为复数，后期名称可能改正
+    "<operators>.assignmentShiftLeft",  
 }
 
 ae_func_2 = {
@@ -15,7 +15,7 @@ ae_func_2 = {
     "<operator>.assignmentPlus",
 }
 
-# unsigned 在类型的前还是后，这通过具体例子确定，挺奇怪的
+
 int_types = {
     "char", "unsigned char","char unsigned"
     "short", "unsigned short", "short unsigned",
@@ -27,14 +27,14 @@ int_types = {
 
 cfuns = load_from_pickle("feature_module/cfuns.db")
 
-# 访问运算符
+
 access_operators = {
    '<operator>.indirectIndexAccess' ,
    '<operator>.indirectFieldAccess',
    '<operator>.fieldAccess'
 }
 
-# 单目运算符
+
 unary_operators = {
     "<operator>.addressOf",
     "<operator>.indirection",
@@ -49,7 +49,7 @@ unary_operators = {
     "<operator>.sizeOf"
 }
 
-# 算术运算符
+
 arithmetic_operators = {
     "<operator>.addition",
     "<operator>.subtraction",
@@ -57,7 +57,7 @@ arithmetic_operators = {
     "<operator>.division",
     "<operator>.modulo"
 }
-# 关系运算符
+
 comparison_operations = {
     '<operator>.greaterThan',
     '<operator>.greaterEqualsThan',
@@ -66,13 +66,13 @@ comparison_operations = {
     '<operator>.equals',
     '<operator>.notEquals',
 }
-# 逻辑运算符
+
 boolean_operations = {
     '<operator>.logicalAnd',
     '<operator>.logicalOr',
     '<operator>.logicalNot'
 }
-# 位运算符
+
 bit_operators = {
     "<operator>.and",
     "<operator>.or",
@@ -95,26 +95,27 @@ assignment_operators = {
     "<operators>.assignmentArithmeticShiftRight",
 }
 
-# 双目运算符
+
 binary_operators = (
     arithmetic_operators |
     comparison_operations |
-    boolean_operations |     # '!'虽然是单目的，但放在这里也不会造成问题
+    boolean_operations |     # Although '!' is monocular, placing it here will not cause any issues.
+
     bit_operators |
     assignment_operators
 )
 
-# 三目运算符
+
 ternary_operators = {
     "<operator>.conditional"
 }
 
 def isConstant(obj) -> bool:
-    """判断一个节点是否为常量"""
+    """Determine whether a node is a constant."""
     return (
         obj['_label'] == 'LITERAL'
-        # sizeOf运算符看做常量
+        # sizeOf
         or (obj['_label'] == 'CALL' and obj['methodFullName'] == '<operator>.sizeOf')
-        # 大写的宏看做常量
+        # Treat uppercase macros as constants.
         or (obj['_label'] == 'IDENTIFIER' and all(char.isupper() or char.isdigit() for char in obj['name'].replace('_', '')))
     )
