@@ -1,0 +1,17 @@
+**/parse_result
+**/graph_object
+**/slice_result
+testcase*
+workspace
+time.txt
+**/__pycache__
+**/__pycache__/*
+cpg.bin
+**/database
+**/.VSCodeCounter
+test*
+log.txt
+1.py
+non_vulnerable_proj/*
+non_vulnerable_proj*
+statistics_data.json
