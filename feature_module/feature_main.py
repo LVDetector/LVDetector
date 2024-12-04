@@ -107,38 +107,7 @@ def extract_feature(proj, fid_set):
                     pass
                     #with open("log.txt","a") as l:              # 注释掉上面的pass后，可以记录没有source的slice
                     #    l.write(f"ATTENTION: project {proj} has slice without source,src_tp is {src}_{tp}\n")
-#     # 统计不同source源的总数
-#     slice_source_total_num["custom_function"] += is_custom_function
-#     slice_source_total_num["function_parameter"] += is_function_parameter
-#     slice_source_total_num["global_variable"] += is_global_variable
-#     # 统计有无隐式漏洞的项目数量 以及 top10软件中有无隐式漏洞的项目数量
-#     software_name = proj.split("-")[5]  # 获取软件名
-#             # 项目名样例：CVE-2006-3635-CWE-119-linux-4dcc29e-check_crashkernel_memory()-0
-#     if software_name == "php":      # 单独考虑一种特殊情况（软件名中包含了项目名中的分隔符号）
-#         software_name = "php-src"
-#     if flag_is_vulnerable:
-#         proj_num["vulnerable"] += 1
-#         # 统计top10软件中有隐式漏洞的项目数
-#         if software_name in top10_software_vulnerable_proj:
-#             top10_software_vulnerable_proj[software_name] += 1
-#         else:
-#             top10_software_vulnerable_proj[software_name] = 1
-#     else:
-#         proj_num["non_vulnerable"] += 1
-#         with open("non_vulnerable_proj.txt","a") as l:      # 记录没有隐式漏洞的项目；
-#             l.write(f"{proj}\n")
-#     proj_num["ALL"] += 1    
-#         # 统计top10软件中参与统计的项目数
-#     if software_name in top10_software_proj:
-#         top10_software_proj[software_name] += 1         
-#     else:
-#         top10_software_proj[software_name] = 1
 
-# #    with open("log.txt","a") as l:      # 记录每个项目的source个数
-# #        l.write(f"\tproject {proj} has !:{source_num}:! source\n")
-#     if source_num == 0:                 # 仅记录没有source的项目
-#         with open("log.txt","a") as l:      
-#             l.write(f"\tproject {proj} has !:{source_num}:! source\n")
 
     dump_to_json(feature_result,f"{sr_path}/{proj}/feature_dict.json")
 

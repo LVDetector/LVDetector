@@ -41,19 +41,6 @@ def compute_slice_result(proj, fid_set):
                     for slice_result in slice_result_list
                 ]
                 
-                # print("============")
-                # print(type(fid))
-                # print(type(src))
-                
-                # for slice_result in slice_result_list:
-                #     print("type: ", type(slice_result[fid][src]))
-                #     for t in slice_result:
-                #         if t[1]:
-                #             print("================")
-                #             print(node_dict[t[0]])
-                #             message = node_dict[t[0]]["code"] + "\t" + "LineNumber:"+str(node_dict[t[0]]["lineNumber"])
-                            
-                # slice_result[fid][src].append(message)
             tmp_slice_num_dict[tp] += len(slice_result[fid])        # 累加单个项目内一个类型的切片数目
         tmp_slice_num_dict["ALL"] += tmp_slice_num_dict[tp]         # 累加单个项目内所有类型的切片数目
         dump_to_json(slice_result, f"{sr_path}/{proj}/slice_result_{tp}.json")
@@ -96,10 +83,6 @@ def compute():
                 p.close()
                 p.join()
     with open("log.txt","a")as l:
-        # 已经转移到其他位置输出
-        #l.write(f"\tALL project\n")
-        #for tp,value in slice_total_num.items():
-        #    l.write(f"\t\t{tp}\t\t{value}\n")
-        #
+
         l.write("切片结束\n\n")
     print(f"Done, used {time.perf_counter() - start:<.2f}s\n")

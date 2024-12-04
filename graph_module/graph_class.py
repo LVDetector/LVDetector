@@ -488,20 +488,7 @@ class GraphDB:
         if sink_num == 0:
             with open("log.txt","a") as l:
                 l.write(f"\tproject {proj} has !:{sink_num}:! sink\n")
-        # 不用在这里统计，不然会出现重复计数！！
-        # 统计sink数量为0的项目，这类项目视为无漏洞项目
-        # if sink_num == 0:
-        #     proj_num["non_vulnerable"] += 1
-        #     # 获取proj的软件名
-        #     software_name = proj.split("-")[5]
-        #     if software_name == "php":
-        #         software_name = "php-src"
-        #     if software_name in top10_software_proj:
-        #         top10_software_proj[software_name] += 1
-        #     else:
-        #         top10_software_proj[software_name] = 1
-        #         top10_software_vulnerable_proj[software_name] = 0   # 初始化为0
-        #
+
         self.bdg.compute_all_slice_data(self.src_list, node_dict)
         self.fdg.compute_all_slice_data(self.src_list, node_dict)
         if PREPARE_DEBUG:
