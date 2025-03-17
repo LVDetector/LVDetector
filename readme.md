@@ -1,6 +1,10 @@
 # DataSet
 [BigVul](https://github.com/ZeoVan/MSR_20_Code_Vulnerability_CSV_Dataset)
 
+We have public a portion of the data in the `00_dataset` directory; the complete dataset will be released upon the paper's acceptance for publication.
+
+# RQ1
+- We have public the code, a portion of the data, and the outcomes of the experiments conducted with DeepSeek-v2.5 duiring RQ1 in paper within the `01_RQ1` directory.
 
 # joern install
 
@@ -9,7 +13,7 @@
 
 ```bash
 sudo apt-get update
-sudo apt-get install openjdk-17-jdk
+sudo apt-get install openjdk-19-jdk
 ```
 
 * install joern
@@ -34,6 +38,8 @@ sudo ./joern-install.sh
 - Run `python3 clean` to clear the results obtained under `data_module/database` and `slice_module/slice_result` without deleting files in the `testcase`
 - Since the progress bar customizes the output, there should be no print functions in the multiprocessing, otherwise it will get stuck
 - Once all the environment configurations are set up, put a small number of projects into the testcase folder, and run from main.py
+
+
 
 # Features not well implemented
 - Exiting the joern server: Currently, it is killed directly using command line instructions, and requires an official way to exit provided by joern
